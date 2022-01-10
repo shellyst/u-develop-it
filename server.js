@@ -25,6 +25,36 @@ db.query(`SELECT * FROM candidates`, (err, rows) => {
   console.log(rows);
 });
 
+//Return a single row
+//GET a single candidate
+// db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(row);
+// });
+
+//Delete a candidate
+// db.query(`DELETE FROM candidates WHERE id = ?`, 1, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
+
+//Create candidate
+//Placeholders are ? ? ? ?
+const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) VALUES (?, ?, ?, ?)`;
+
+const params = [1, "Ronald", "Firbank", 1];
+
+db.query(sql, params, (err, result) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(result);
+});
+
 //Handle requests that aren't supported by the app
 //Defaul response for any other request (Not Found)
 app.use((req, res) => {
